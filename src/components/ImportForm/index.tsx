@@ -1,4 +1,5 @@
 "use client";
+import { saveToDB } from "@/utils";
 import { ChangeEvent, FormEvent, useRef } from "react";
 
 export const ImportForm = () => {
@@ -6,11 +7,17 @@ export const ImportForm = () => {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(textRef.current?.value);
+    saveToDB();
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <textarea rows={20} cols={30} ref={textRef} />
+      <textarea
+        placeholder="단어,의미,발음 순으로 줄마다 작성"
+        rows={20}
+        cols={30}
+        ref={textRef}
+      />
       <button type="submit">제출</button>
     </form>
   );
