@@ -15,7 +15,7 @@ export function createDB() {
     const objectStore = db.createObjectStore("words", {
       autoIncrement: true,
     });
-    objectStore.createIndex("word", "word", { unique: false });
+    objectStore.createIndex("word", "word", { unique: true });
     objectStore.createIndex("meaning", "meaning", { unique: false });
     objectStore.createIndex("pronunciation", "pronunciation", {
       unique: false,
