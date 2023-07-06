@@ -4312,6 +4312,7 @@ __metadata:
     react-dom: 18.2.0
     react-error-boundary: ^4.0.10
     recoil: ^0.7.7
+    tailwind-merge: ^1.13.2
     tailwindcss: 3.3.2
     ts-jest: ^29.1.1
     typescript: 5.1.6
@@ -6207,6 +6208,13 @@ __metadata:
     "@pkgr/utils": ^2.3.1
     tslib: ^2.5.0
   checksum: 8a9560e5d8f3d94dc3cf5f7b9c83490ffa30d320093560a37b88f59483040771fd1750e76b9939abfbb1b5a23fd6dfbae77f6b338abffe7cae7329cd9b9bb86b
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^1.13.2":
+  version: 1.13.2
+  resolution: "tailwind-merge@npm:1.13.2"
+  checksum: 8f9de3bd1e6271f5980f863ab85e0103f062bf84d814d3188bf6870af7eb43725ea40493ef0693dedd652b668cbdfcd6544235b16b70d438ed20bca6118a9066
   languageName: node
   linkType: hard
 

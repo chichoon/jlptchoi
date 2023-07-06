@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:18.2.0"],\
             ["react-error-boundary", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:4.0.10"],\
             ["recoil", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:0.7.7"],\
+            ["tailwind-merge", "npm:1.13.2"],\
             ["tailwindcss", "npm:3.3.2"],\
             ["ts-jest", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:29.1.1"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
@@ -5759,6 +5760,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:18.2.0"],\
             ["react-error-boundary", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:4.0.10"],\
             ["recoil", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:0.7.7"],\
+            ["tailwind-merge", "npm:1.13.2"],\
             ["tailwindcss", "npm:3.3.2"],\
             ["ts-jest", "virtual:1e8072d92e581799946230a3db3947a00a9da2c1aabd7aa7ffbc71b9d9e13de7c120ee37800a533bb07886b3cd2c5ed7d7f2f45e8cc69c0f649631168754afb9#npm:29.1.1"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
@@ -7898,6 +7900,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["synckit", "npm:0.8.5"],\
             ["@pkgr/utils", "npm:2.4.1"],\
             ["tslib", "npm:2.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tailwind-merge", [\
+        ["npm:1.13.2", {\
+          "packageLocation": "./.yarn/cache/tailwind-merge-npm-1.13.2-3c79926951-8f9de3bd1e.zip/node_modules/tailwind-merge/",\
+          "packageDependencies": [\
+            ["tailwind-merge", "npm:1.13.2"]\
           ],\
           "linkType": "HARD"\
         }]\
