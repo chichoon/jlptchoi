@@ -3,3 +3,7 @@ export interface Word {
   meaning: string;
   pronunciation: string;
 }
+
+export interface WordRecord extends Word {
+  key: number;
+}
