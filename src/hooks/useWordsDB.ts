@@ -10,13 +10,13 @@ export function useWordsDB() {
 
     const request = indexedDB.open("WordDB");
 
-    request.onsuccess = function (e: Event) {
-      resolve(e.target?.result ?? null);
+    request.onsuccess = function () {
+      resolve(request.result ?? null);
     };
-    request.onerror = function (e: Event) {
-      reject(e);
+    request.onerror = function () {
+      reject(request.error);
     };
-    request.onupgradeneeded = function (e: Event) {
+    request.onupgradeneeded = function () {
       const db = request.result;
       const objectStore = db.createObjectStore("words", {
         autoIncrement: true,
@@ -40,11 +40,11 @@ export function useWordsDB() {
           .transaction("words", "readwrite")
           .objectStore("words")
           .count();
-        result.onsuccess = function (e: Event) {
+        result.onsuccess = function () {
           resolve(result.result);
         };
-        result.onerror = function (e: Event) {
-          reject(e.target?.error ?? "DB Count Error");
+        result.onerror = function () {
+          reject(result.error ?? "DB Count Error");
         };
       });
     });
@@ -61,11 +61,11 @@ export function useWordsDB() {
           .transaction("words", "readwrite")
           .objectStore("words")
           .get(index);
-        result.onsuccess = function (e: Event) {
+        result.onsuccess = function () {
           resolve(result.result);
         };
-        result.onerror = function (e: Event) {
-          reject(e.target?.error ?? "DB Get Error");
+        result.onerror = function () {
+          reject(result.error ?? "DB Get Error");
         };
       });
     });
@@ -83,7 +83,7 @@ export function useWordsDB() {
           .objectStore("words");
         words.forEach((word) => {
           let request = objectStore.put(word);
-          request.onerror = function (e: Event) {
+          request.onerror = function () {
             reject("DB Save Error");
           };
         });
@@ -103,11 +103,11 @@ export function useWordsDB() {
           .transaction("words", "readwrite")
           .objectStore("words")
           .delete(index);
-        result.onsuccess = function (e: Event) {
+        result.onsuccess = function () {
           resolve();
         };
-        result.onerror = function (e: Event) {
-          reject(e.target?.error ?? "DB Remove Error");
+        result.onerror = function () {
+          reject(result.error ?? "DB Remove Error");
         };
       });
     });
