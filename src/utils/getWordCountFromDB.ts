@@ -1,4 +1,4 @@
-export function getWordsFromDB(index: number) {
+export function getWordCountFromDB() {
   const indexedDB = window.indexedDB;
   if (!indexedDB) {
     window.alert("해당 브라우저에서는 Indexed DB를 지원하지 않습니다.");
@@ -15,11 +15,13 @@ export function getWordsFromDB(index: number) {
     transaction.onerror = function (e: Event) {
       // TODO : error handling
     };
-    const result = transaction.objectStore("words").get(index);
+    const result = transaction.objectStore("words").count();
     result.onsuccess = function (e: Event) {
       return result;
     };
-    result.onerror = function (e: Event) {};
+    result.onerror = function (e: Event) {
+      return 0;
+    };
     return result.result;
   };
   return request.result;
