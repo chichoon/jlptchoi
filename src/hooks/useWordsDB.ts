@@ -84,7 +84,7 @@ export function useWordsDB() {
         words.forEach((word) => {
           let request = objectStore.put(word);
           request.onerror = function () {
-            reject("DB Save Error");
+            reject(request.error ?? "DB Save Error");
           };
         });
         resolve();
