@@ -1,3 +1,4 @@
+import { ShowWords } from "@/components";
 import Link from "next/link";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
       <Link href="/import">
         <span>단어 추가하러 가기</span>
       </Link>
+      <ShowWords />
     </div>
   );
 }

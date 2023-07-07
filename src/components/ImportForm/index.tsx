@@ -1,6 +1,6 @@
 "use client";
 
-import { parseWords, saveToDB } from "@/utils";
+import { parseWords } from "@/utils";
 import { ChangeEvent, FormEvent, useRef } from "react";
 
 export const ImportForm = () => {
@@ -10,7 +10,7 @@ export const ImportForm = () => {
     if (textRef.current === null) return;
     const words = parseWords(textRef.current.value);
     if (!words || words.length === 0) return;
-    saveToDB(words);
+    // saveToDB(words);
   }
 
   return (
