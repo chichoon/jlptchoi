@@ -17,11 +17,11 @@ export function saveToDB(words: Word[]) {
     const db = request.result;
     const transaction = db.transaction("words", "readwrite");
     transaction.onerror = function (e: Event) {
-      console.log(e.target.error.message);
+      console.log(e.target);
     };
     const objectStore = transaction.objectStore("words");
     words.forEach((word) => {
-      let request = objectStore.add(word);
+      let request = objectStore.put(word);
       request.onsuccess = function (e: Event) {};
     });
   };
