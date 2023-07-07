@@ -1,0 +1,1 @@
+export { useWordsDB } from "./useWordsDB";
