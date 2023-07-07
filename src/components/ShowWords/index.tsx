@@ -1,12 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import { useWordsDB } from "@/hooks/useWordsDB";
 
 export const ShowWords = () => {
-  // useEffect(() => {
-  //   const count = getWordCountFromDB();
-  //   console.log(count);
-  // }, []);
+  const [count, setCount] = useState(0);
+  const { getWordCount } = useWordsDB();
+  useEffect(() => {
+    getWordCount().then((value) => {
+      setCount(value);
+      console.log(value);
+    });
+  }, []);
   return (
     <div>
       <h2>하이</h2>
