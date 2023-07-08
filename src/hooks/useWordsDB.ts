@@ -1,17 +1,17 @@
 import { Word } from "@/types/Words";
 
 export function useWordsDB() {
-  const dbPromise = new Promise<IDBDatabase | null>((resolve, reject) => {
+  const dbPromise = new Promise<IDBDatabase>((resolve, reject) => {
     const indexedDB = window.indexedDB;
     if (!indexedDB) {
       window.alert("해당 브라우저에서는 Indexed DB를 지원하지 않습니다.");
-      return; // TODO: throw로 바꾸기
+      reject("Indexed DB is not supported");
     }
 
     const request = indexedDB.open("WordDB");
 
     request.onsuccess = function () {
-      resolve(request.result ?? null);
+      resolve(request.result);
     };
     request.onerror = function () {
       reject(request.error);
@@ -37,14 +37,14 @@ export function useWordsDB() {
           return;
         }
         const result = db
-          .transaction("words", "readwrite")
+          .transaction(["words"], "readwrite")
           .objectStore("words")
           .count();
         result.onsuccess = function () {
           resolve(result.result);
         };
         result.onerror = function () {
-          reject(result.error ?? "DB Count Error");
+          reject(result.error);
         };
       });
     });
@@ -53,19 +53,15 @@ export function useWordsDB() {
   async function getWord(index: number): Promise<Word | null> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
-        if (!db) {
-          reject("DB is not initialized");
-          return;
-        }
         const result = db
-          .transaction("words", "readwrite")
+          .transaction(["words"], "readwrite")
           .objectStore("words")
           .get(index);
         result.onsuccess = function () {
           resolve(result.result);
         };
         result.onerror = function () {
-          reject(result.error ?? "DB Get Error");
+          reject(result.error);
         };
       });
     });
@@ -74,17 +70,13 @@ export function useWordsDB() {
   async function saveToDB(words: Word[]): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
-        if (!db) {
-          reject("DB is not initialized");
-          return;
-        }
         const objectStore = db
-          .transaction("words", "readwrite")
+          .transaction(["words"], "readwrite")
           .objectStore("words");
         words.forEach((word) => {
           let request = objectStore.put(word);
           request.onerror = function () {
-            reject(request.error ?? "DB Save Error");
+            reject(request.error);
           };
         });
         resolve();
@@ -95,19 +87,15 @@ export function useWordsDB() {
   async function removeFromDB(index: number): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
-        if (!db) {
-          reject("DB is not initialized");
-          return;
-        }
         const result = db
-          .transaction("words", "readwrite")
+          .transaction(["words"], "readwrite")
           .objectStore("words")
           .delete(index);
         result.onsuccess = function () {
           resolve();
         };
         result.onerror = function () {
-          reject(result.error ?? "DB Remove Error");
+          reject(result.error);
         };
       });
     });
