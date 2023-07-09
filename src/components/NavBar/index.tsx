@@ -40,5 +40,5 @@ export const NavBarButton = ({
 };
 
 export const NavBarSpacer = () => {
-  return <div className="flex-1" />;
+  return <div className="flex-1  px-4 py-2 h-full" />;
 };

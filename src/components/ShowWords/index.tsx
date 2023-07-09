@@ -48,11 +48,23 @@ export const ShowWords = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{word?.word}</h2>
-      <input type="text" autoFocus placeholder="발음을 입력" ref={inputRef} />
-      <button type="submit">제출</button>
-      <span>{errorMsg}</span>
+    <form onSubmit={handleSubmit} className="flex flex-col w-full p-2">
+      <h2 className="text-4xl w-full text-center mb-4">{word?.word}</h2>
+      <input
+        type="text"
+        autoFocus
+        placeholder="발음을 입력"
+        ref={inputRef}
+        className="w-full border-2 rounded-sm bg-white text-xl h-12"
+      />
+      <div className="h-10 flex items-center justify-center my-2">
+        <span className="text-red-600">{errorMsg}</span>
+      </div>
+      <button
+        type="submit"
+        className="bg-slate-500 h-10 text-white text-lg rounded-xl transition-transform active:scale-95">
+        제출
+      </button>
     </form>
   );
 };
