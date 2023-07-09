@@ -18,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, "flex flex-col w-screen h-screen")}>
         {children}
+        <div id="modal" />
       </body>
     </html>
   );
