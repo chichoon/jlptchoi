@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 
 import { useWordsDB } from "@/hooks/useWordsDB";
 import { Word } from "@/types/Words";
+import { Button } from "../Button";
 
 export const ShowWords = () => {
   const [count, setCount] = useState<number>(0);
@@ -60,11 +61,7 @@ export const ShowWords = () => {
       <div className="h-10 flex items-center justify-center my-2">
         <span className="text-red-600">{errorMsg}</span>
       </div>
-      <button
-        type="submit"
-        className="bg-slate-500 h-10 text-white text-lg rounded-xl transition-transform active:scale-95">
-        제출
-      </button>
+      <Button type="submit" text="제출" />
     </form>
   );
 };
