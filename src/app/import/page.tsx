@@ -1,17 +1,20 @@
 "use client";
 import { ImportForm } from "@/components";
-import Link from "next/link";
+import { NavBar, NavBarButton } from "@/components/NavBar";
 
 export default function Import() {
   return (
-    <div>
+    <>
+      <NavBar>
+        <NavBarButton href="/">
+          <span>홈</span>
+        </NavBarButton>
+        <div className="flex-1" />
+      </NavBar>
       <div>
-        <Link href="/">
-          <span>돌아가기</span>
-        </Link>
         <h1>단어 추가</h1>
       </div>
       <ImportForm />
-    </div>
+    </>
   );
 }
