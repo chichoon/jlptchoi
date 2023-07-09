@@ -2,6 +2,10 @@ import { Word } from "@/types/Words";
 
 export function useWordsDB() {
   const dbPromise = new Promise<IDBDatabase>((resolve, reject) => {
+    if (!window) {
+      reject("window is not initialized");
+    }
+
     const indexedDB = window.indexedDB;
     if (!indexedDB) {
       window.alert("해당 브라우저에서는 Indexed DB를 지원하지 않습니다.");
