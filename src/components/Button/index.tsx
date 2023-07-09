@@ -1,13 +1,19 @@
 import { twMerge } from "tailwind-merge";
 import cn from "classnames";
+import { ButtonHTMLAttributes } from "react";
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   type: "button" | "submit";
   colorType?: "primary" | "secondary";
   text: string;
 }
 
-export const Button = ({ type, colorType = "primary", text }: Props) => {
+export const Button = ({
+  type,
+  colorType = "primary",
+  text,
+  ...props
+}: Props) => {
   return (
     <button
       type={type}
@@ -17,7 +23,8 @@ export const Button = ({ type, colorType = "primary", text }: Props) => {
           "bg-slate-300 hover:bg-slate-400 text-black":
             colorType === "secondary",
         })
-      )}>
+      )}
+      {...props}>
       {text}
     </button>
   );
