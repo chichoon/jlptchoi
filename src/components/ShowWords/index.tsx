@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useWordsDB } from "@/hooks/useWordsDB";
 import { Word } from "@/types/Words";
 import { Button } from "../Button";
+import { Header } from "../Header";
 
 export const ShowWords = () => {
   const router = useRouter();
@@ -56,13 +57,13 @@ export const ShowWords = () => {
   if (!word)
     return (
       <div className="flex flex-col items-center p-2">
-        <span className="text-2xl mb-4">단어를 찾을 수 없어요</span>
+        <Header text="단어를 찾을 수 없어요" />
         <Button text="단어 추가하기" onClick={handleClickImport} />
       </div>
     );
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full p-2">
-      <h2 className="text-4xl w-full text-center mb-4">{word?.word}</h2>
+      <Header size="large" text={word.word} />
       <input
         type="text"
         autoFocus
