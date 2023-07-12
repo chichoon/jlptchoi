@@ -1,6 +1,7 @@
 export { ImportForm } from "./ImportForm";
 export { ShowWords } from "./ShowWords";
 export { SettingsSection } from "./SettingsSection";
+export { WordsTable } from "./WordsTable";
 
 export { NavBar, NavBarButton, NavBarSpacer } from "./NavBar";
 export { Button } from "./Button";

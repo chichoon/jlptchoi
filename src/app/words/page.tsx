@@ -1,4 +1,11 @@
-import { NavBar, NavBarButton, NavBarSpacer, PageWrapper } from "@/components";
+import {
+  Header,
+  NavBar,
+  NavBarButton,
+  NavBarSpacer,
+  PageWrapper,
+  WordsTable,
+} from "@/components";
 
 export default function Words() {
   return (
@@ -13,7 +20,8 @@ export default function Words() {
         </NavBarButton>
       </NavBar>
       <PageWrapper>
-        <div>단어장</div>
+        <Header text="단어장" />
+        <WordsTable />
       </PageWrapper>
     </>
   );
