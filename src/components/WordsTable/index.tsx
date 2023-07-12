@@ -16,10 +16,10 @@ export const WordsTable = () => {
     });
   }, []);
 
-  function handleClickDelete(index: number) {
+  function handleClickDelete(key: number) {
     return function () {
-      console.log(index);
-      removeFromDB(index)
+      console.log(key);
+      removeFromDB(key)
         .then(getAllWords)
         .then((value) => {
           setWords(value);
@@ -40,7 +40,7 @@ export const WordsTable = () => {
                 <Button
                   type="button"
                   text="삭제"
-                  onClick={handleClickDelete(index)}
+                  onClick={handleClickDelete(word.key)}
                 />
               </td>
             </tr>
