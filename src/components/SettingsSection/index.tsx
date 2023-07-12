@@ -22,7 +22,7 @@ export const SettingsSection = () => {
   }
 
   return (
-    <div className="w-full flex flex-col p-2">
+    <>
       <h1 className="text-2xl w-full text-center mb-4">설정</h1>
       <Button
         colorType="secondary"
@@ -36,6 +36,6 @@ export const SettingsSection = () => {
           message="데이터베이스를 초기화하시겠습니까?"
         />
       )}
-    </div>
+    </>
   );
 };

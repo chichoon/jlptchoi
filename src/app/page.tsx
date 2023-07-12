@@ -1,4 +1,4 @@
-import { ShowWords } from "@/components";
+import { PageWrapper, ShowWords } from "@/components";
 import { NavBar, NavBarButton, NavBarSpacer } from "@/components/NavBar";
 import Link from "next/link";
 
@@ -16,9 +16,9 @@ export default function Home() {
           </NavBarButton>
         </>
       </NavBar>
-      <div className="flex-1 flex flex-col items-center">
+      <PageWrapper>
         <ShowWords />
-      </div>
+      </PageWrapper>
     </>
   );
 }

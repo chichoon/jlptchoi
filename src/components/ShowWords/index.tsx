@@ -56,13 +56,13 @@ export const ShowWords = () => {
   }
   if (!word)
     return (
-      <div className="flex flex-col items-center p-2">
+      <div className="flex flex-col items-center">
         <Header text="단어를 찾을 수 없어요" />
         <Button text="단어 추가하기" onClick={handleClickImport} />
       </div>
     );
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col w-full p-2">
+    <form onSubmit={handleSubmit} className="flex flex-col w-full">
       <Header size="large" text={word.word} />
       <input
         type="text"

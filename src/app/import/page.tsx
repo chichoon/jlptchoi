@@ -1,5 +1,5 @@
 "use client";
-import { ImportForm } from "@/components";
+import { Header, ImportForm, PageWrapper } from "@/components";
 import { NavBar, NavBarButton, NavBarSpacer } from "@/components/NavBar";
 
 export default function Import() {
@@ -12,10 +12,10 @@ export default function Import() {
         <NavBarSpacer />
         <NavBarSpacer />
       </NavBar>
-      <div>
-        <h1>단어 추가</h1>
-      </div>
-      <ImportForm />
+      <PageWrapper>
+        <Header text="단어 추가" />
+        <ImportForm />
+      </PageWrapper>
     </>
   );
 }

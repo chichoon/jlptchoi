@@ -2,6 +2,7 @@ import {
   NavBar,
   NavBarButton,
   NavBarSpacer,
+  PageWrapper,
   SettingsSection,
 } from "@/components";
 import { useWordsDB } from "@/hooks";
@@ -20,7 +21,9 @@ export default function Settings() {
         <NavBarSpacer />
         <NavBarSpacer />
       </NavBar>
-      <SettingsSection />
+      <PageWrapper>
+        <SettingsSection />
+      </PageWrapper>
     </>
   );
 }

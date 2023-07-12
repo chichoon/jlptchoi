@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useRef } from "react";
 
 import { useWordsDB } from "@/hooks";
 import { parseWords } from "@/utils";
+import { Button } from "../Button";
 
 export const ImportForm = () => {
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -17,14 +18,14 @@ export const ImportForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center">
       <textarea
         placeholder="단어,의미,발음 순으로 줄마다 작성"
-        rows={20}
+        rows={15}
         cols={30}
         ref={textRef}
       />
-      <button type="submit">제출</button>
+      <Button type="submit" text="제출" />
     </form>
   );
 };
