@@ -7,7 +7,7 @@ import { Modal } from "../Modal";
 
 export const SettingsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { removeDB } = useWordsDB();
+  const { clearDB } = useWordsDB();
   function handleReset() {
     setIsModalOpen(true);
   }
@@ -17,7 +17,7 @@ export const SettingsSection = () => {
   }
 
   function handleOK() {
-    removeDB();
+    clearDB();
     setIsModalOpen(false);
   }
 

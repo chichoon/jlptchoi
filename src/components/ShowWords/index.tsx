@@ -10,8 +10,13 @@ import { Header } from "../Header";
 
 export const ShowWords = () => {
   const router = useRouter();
-  const [currentWordKey, setCurrentWordKey] = useState<number>(0);
   const [words, setWords] = useState<Word[] | null>(null);
+  const [word, setWord] = useState<Word>({
+    word: "",
+    pronunciation: "",
+    meaning: "",
+    key: 0,
+  });
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const { getAllWords } = useWordsDB();
@@ -24,7 +29,7 @@ export const ShowWords = () => {
 
   useEffect(() => {
     if (!words) return;
-    setCurrentWordKey(Math.round(Math.random() * words.length));
+    setWord(words[Math.round(Math.random() * (words.length - 1))]);
   }, [words]);
 
   useEffect(() => {
@@ -41,23 +46,23 @@ export const ShowWords = () => {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (inputRef.current === null || !words) return;
-    if (inputRef.current.value !== words[currentWordKey].pronunciation) {
+    if (inputRef.current.value !== word.pronunciation) {
       setErrorMsg("틀렸습니다!");
       return;
     }
-    setCurrentWordKey(Math.round(Math.random() * words.length));
+    setWord(words[Math.round(Math.random() * (words.length - 1))]);
     inputRef.current.value = "";
   }
   if (!words)
     return (
-      <div className="flex flex-col items-center">
+      <>
         <Header text="단어를 찾을 수 없어요" />
         <Button text="단어 추가하기" onClick={handleClickImport} />
-      </div>
+      </>
     );
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full">
-      <Header size="large" text={words[currentWordKey].word} />
+      <Header size="large" text={word.word} />
       <input
         type="text"
         autoFocus
