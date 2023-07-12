@@ -1,12 +1,14 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { useWordsDB } from "@/hooks/useWordsDB";
 import { Word } from "@/types/Words";
 import { Button } from "../Button";
 
 export const ShowWords = () => {
+  const router = useRouter();
   const [count, setCount] = useState<number>(0);
   const [currentWordKey, setCurrentWordKey] = useState<number>(0);
   const [word, setWord] = useState<Word | null>(null);
@@ -37,6 +39,10 @@ export const ShowWords = () => {
     }, 1000);
   }, [errorMsg]);
 
+  function handleClickImport() {
+    router.push("/import");
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (inputRef.current === null || !word) return;
@@ -47,7 +53,13 @@ export const ShowWords = () => {
     setCurrentWordKey(Math.round(Math.random() * (count - 1)) + 1);
     inputRef.current.value = "";
   }
-
+  if (!word)
+    return (
+      <div className="flex flex-col items-center p-2">
+        <span className="text-2xl mb-4">단어를 찾을 수 없어요</span>
+        <Button text="단어 추가하기" onClick={handleClickImport} />
+      </div>
+    );
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full p-2">
       <h2 className="text-4xl w-full text-center mb-4">{word?.word}</h2>
