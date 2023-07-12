@@ -23,8 +23,10 @@ export function useWordsDB() {
     request.onupgradeneeded = function () {
       const db = request.result;
       const objectStore = db.createObjectStore("words", {
+        keyPath: "key",
         autoIncrement: true,
       });
+      objectStore.createIndex("key", "key", { unique: true });
       objectStore.createIndex("word", "word", { unique: true });
       objectStore.createIndex("meaning", "meaning", { unique: false });
       objectStore.createIndex("pronunciation", "pronunciation", {
@@ -102,7 +104,7 @@ export function useWordsDB() {
     });
   }
 
-  async function removeDB(): Promise<void> {
+  async function clearDB(): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
         const result = db
@@ -124,6 +126,6 @@ export function useWordsDB() {
     getAllWords,
     saveToDB,
     removeFromDB,
-    removeDB,
+    clearDB,
   };
 }
