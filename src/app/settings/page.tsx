@@ -5,13 +5,8 @@ import {
   PageWrapper,
   SettingsSection,
 } from "@/components";
-import { useWordsDB } from "@/hooks";
 
 export default function Settings() {
-  const { removeDB } = useWordsDB();
-  function handleReset() {
-    removeDB();
-  }
   return (
     <>
       <NavBar>

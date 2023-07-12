@@ -1,13 +1,14 @@
 import { PageWrapper, ShowWords } from "@/components";
-import { NavBar, NavBarButton, NavBarSpacer } from "@/components/NavBar";
-import Link from "next/link";
+import { NavBar, NavBarButton } from "@/components/NavBar";
 
 export default function Home() {
   return (
     <>
       <NavBar>
         <>
-          <NavBarSpacer />
+          <NavBarButton href="/words">
+            <span>단어장</span>
+          </NavBarButton>
           <NavBarButton href="/import">
             <span>단어 추가</span>
           </NavBarButton>
