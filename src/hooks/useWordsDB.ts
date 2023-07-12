@@ -33,17 +33,13 @@ export function useWordsDB() {
     };
   });
 
-  async function getWordCount(): Promise<number> {
+  async function getWord(index: number): Promise<Word> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
-        if (!db) {
-          reject("DB is not initialized");
-          return;
-        }
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
-          .count();
+          .get(index);
         result.onsuccess = function () {
           resolve(result.result);
         };
@@ -54,14 +50,15 @@ export function useWordsDB() {
     });
   }
 
-  async function getWord(index: number): Promise<Word | null> {
+  async function getAllWords(): Promise<Word[]> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
-          .get(index);
+          .getAll();
         result.onsuccess = function () {
+          console.log(result.result);
           resolve(result.result);
         };
         result.onerror = function () {
@@ -105,14 +102,28 @@ export function useWordsDB() {
     });
   }
 
-  function removeDB() {
-    const indexedDB = window.indexedDB;
-    if (!indexedDB) {
-      window.alert("해당 브라우저에서는 Indexed DB를 지원하지 않습니다.");
-      return; // TODO: throw로 바꾸기
-    }
-    indexedDB.deleteDatabase("WordDB");
+  async function removeDB(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      dbPromise.then((db) => {
+        const result = db
+          .transaction(["words"], "readwrite")
+          .objectStore("words")
+          .clear();
+        result.onsuccess = function () {
+          resolve();
+        };
+        result.onerror = function () {
+          reject(result.error);
+        };
+      });
+    });
   }
 
-  return { getWordCount, getWord, saveToDB, removeFromDB, removeDB };
+  return {
+    getWord,
+    getAllWords,
+    saveToDB,
+    removeFromDB,
+    removeDB,
+  };
 }

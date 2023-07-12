@@ -10,28 +10,22 @@ import { Header } from "../Header";
 
 export const ShowWords = () => {
   const router = useRouter();
-  const [count, setCount] = useState<number>(0);
   const [currentWordKey, setCurrentWordKey] = useState<number>(0);
-  const [word, setWord] = useState<Word | null>(null);
+  const [words, setWords] = useState<Word[] | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const { getWord, getWordCount } = useWordsDB();
+  const { getAllWords } = useWordsDB();
 
   useEffect(() => {
-    getWordCount().then((value) => {
-      setCount(value);
+    getAllWords().then((value) => {
+      setWords(value);
     });
   }, []);
 
   useEffect(() => {
-    setCurrentWordKey(Math.round(Math.random() * (count - 1)) + 1);
-  }, [count]);
-
-  useEffect(() => {
-    getWord(currentWordKey).then((value) => {
-      setWord(value);
-    });
-  }, [currentWordKey]);
+    if (!words) return;
+    setCurrentWordKey(Math.round(Math.random() * words.length));
+  }, [words]);
 
   useEffect(() => {
     if (errorMsg.length === 0) return;
@@ -46,15 +40,15 @@ export const ShowWords = () => {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (inputRef.current === null || !word) return;
-    if (inputRef.current.value !== word.pronunciation) {
+    if (inputRef.current === null || !words) return;
+    if (inputRef.current.value !== words[currentWordKey].pronunciation) {
       setErrorMsg("틀렸습니다!");
       return;
     }
-    setCurrentWordKey(Math.round(Math.random() * (count - 1)) + 1);
+    setCurrentWordKey(Math.round(Math.random() * words.length));
     inputRef.current.value = "";
   }
-  if (!word)
+  if (!words)
     return (
       <div className="flex flex-col items-center">
         <Header text="단어를 찾을 수 없어요" />
@@ -63,7 +57,7 @@ export const ShowWords = () => {
     );
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full">
-      <Header size="large" text={word.word} />
+      <Header size="large" text={words[currentWordKey].word} />
       <input
         type="text"
         autoFocus
