@@ -25,9 +25,8 @@ export const SettingsSection = () => {
     <div className="w-full flex flex-col p-2">
       <h1 className="text-2xl w-full text-center mb-4">설정</h1>
       <Button
-        type="button"
         colorType="secondary"
-        text="초기화"
+        text="데이터베이스 초기화"
         onClick={handleReset}
       />
       {isModalOpen && (
