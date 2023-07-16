@@ -1,6 +1,6 @@
-import { Word } from "@/types/Words";
+import { WordWithoutKey } from "@/types/Words";
 
-export function parseWords(words: string): Word[] | null {
+export function parseWords(words: string): WordWithoutKey[] | null {
   try {
     return words
       .trim()

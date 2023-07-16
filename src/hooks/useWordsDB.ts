@@ -1,4 +1,4 @@
-import { Word } from "@/types/Words";
+import { Word, WordWithoutKey } from "@/types/Words";
 
 export function useWordsDB() {
   const dbPromise = new Promise<IDBDatabase>((resolve, reject) => {
@@ -70,7 +70,7 @@ export function useWordsDB() {
     });
   }
 
-  async function saveToDB(words: Word[]): Promise<void> {
+  async function saveToDB(words: WordWithoutKey[]): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
         const objectStore = db

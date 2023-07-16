@@ -4,3 +4,5 @@ export interface Word {
   meaning: string;
   pronunciation: string;
 }
+
+export interface WordWithoutKey extends Omit<Word, "key"> {}
