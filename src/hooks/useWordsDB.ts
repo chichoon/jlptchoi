@@ -2,7 +2,7 @@ import { Word, WordWithoutKey } from "@/types/Words";
 
 export function useWordsDB() {
   const dbPromise = new Promise<IDBDatabase>((resolve, reject) => {
-    if (!window) {
+    if (typeof window === "undefined") {
       reject("window is not initialized");
     }
 
