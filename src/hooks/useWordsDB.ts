@@ -33,11 +33,12 @@ export function useWordsDB() {
         unique: false,
       });
     };
-  });
+  }).catch((e) => console.log(e));
 
   async function getWord(index: number): Promise<Word> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
+        if (!db) return;
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
@@ -55,6 +56,7 @@ export function useWordsDB() {
   async function getAllWords(): Promise<Word[]> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
+        if (!db) return;
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
@@ -73,6 +75,7 @@ export function useWordsDB() {
   async function saveToDB(words: WordWithoutKey[]): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
+        if (!db) return;
         const objectStore = db
           .transaction(["words"], "readwrite")
           .objectStore("words");
@@ -90,6 +93,7 @@ export function useWordsDB() {
   async function removeFromDB(index: number): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
+        if (!db) return;
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
@@ -107,6 +111,7 @@ export function useWordsDB() {
   async function clearDB(): Promise<void> {
     return new Promise((resolve, reject) => {
       dbPromise.then((db) => {
+        if (!db) return;
         const result = db
           .transaction(["words"], "readwrite")
           .objectStore("words")
