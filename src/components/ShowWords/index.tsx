@@ -55,7 +55,7 @@ export const ShowWords = () => {
     inputRef.current.value = "";
   }
   console.log(words);
-  if (!words)
+  if (!words || !word)
     return (
       <>
         <Header text="단어를 찾을 수 없어요" />
