@@ -54,7 +54,7 @@ export const ShowWords = () => {
     setWord(words[Math.round(Math.random() * (words.length - 1))]);
     inputRef.current.value = "";
   }
-  console.log(words);
+
   if (!words || words.length === 0)
     return (
       <>
