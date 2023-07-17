@@ -29,7 +29,7 @@ export const ShowWords = () => {
   }, []);
 
   useEffect(() => {
-    if (!words) return;
+    if (!words || words.length === 0) return;
     setWord(words[Math.round(Math.random() * (words.length - 1))]);
   }, [words]);
 
@@ -46,7 +46,7 @@ export const ShowWords = () => {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (inputRef.current === null || !words) return;
+    if (inputRef.current === null || !words || words.length === 0) return;
     if (inputRef.current.value !== word.pronunciation) {
       setErrorMsg("틀렸습니다!");
       return;
