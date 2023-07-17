@@ -1,5 +1,5 @@
 {
-  "name": "App",
+  "name": "jlptchoi",
   "theme_color": "#3f454a",
   "background_color": "#3f454a",
   "display": "standalone",
@@ -43,5 +43,9 @@
       "type": "image/png",
       "density": "4.0"
     }
-  ]
+  ],
+  "short_name": "jlptchoi",
+  "description": "Chichoon's JLPT Wordbook",
+  "dir": "ltr",
+  "lang": "ko"
 }
