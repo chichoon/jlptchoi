@@ -11,7 +11,7 @@ export const ImportForm = () => {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const { saveToDB } = useWordsDB();
   const [message, setMessage] = useState("");
-  const { isShown } = useToast({ message, setMessage });
+  const { isShown, isHiding } = useToast({ message, setMessage });
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,7 +33,7 @@ export const ImportForm = () => {
         />
         <Button type="submit" text="제출" />
       </form>
-      {isShown && <Toast message={message} />}
+      {isShown && <Toast message={message} isHiding={isHiding} />}
     </>
   );
 };

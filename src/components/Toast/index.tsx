@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import ReactDOM from "react-dom";
+import cn from "classnames";
 
 interface Props {
   children: ReactNode;
@@ -15,13 +16,18 @@ const ToastPortal = ({ children }: Props) => {
 
 interface ToastProps {
   message: string;
+  isHiding: boolean;
 }
 
-export const Toast = ({ message }: ToastProps) => {
+export const Toast = ({ message, isHiding }: ToastProps) => {
   return (
     <ToastPortal>
-      <div className="fixed bottom-1/2 left-1/2 w-fit h-fit flex items-center justify-center">
-        <div className={"bg-white rounded-sm border-2 transition-opacity "}>
+      <div className="fixed bottom-0 left-0 w-full h-full flex items-center justify-center">
+        <div
+          className={cn("bg-white rounded-sm border-2 animate-fade-in", {
+            "animate-fade-out": isHiding,
+          })}
+        >
           <span>{message}</span>
         </div>
       </div>

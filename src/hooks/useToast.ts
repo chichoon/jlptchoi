@@ -8,6 +8,7 @@ interface Props {
 
 export function useToast({ message, setMessage, duration = 1000 }: Props) {
   const [isShown, setIsShown] = useState(false);
+  const [isHiding, setIsHiding] = useState(false);
 
   useEffect(() => {
     if (message) setIsShown(true);
@@ -17,14 +18,16 @@ export function useToast({ message, setMessage, duration = 1000 }: Props) {
     if (isShown) {
       const setTimeout1 = setTimeout(() => {
         setIsShown(false);
+        setMessage("");
+        setIsHiding(false);
         clearTimeout(setTimeout1);
       }, duration);
       const setTimeout2 = setTimeout(() => {
-        setMessage("");
+        setIsHiding(true);
         clearTimeout(setTimeout2);
-      }, duration + 500);
+      }, duration - 200);
     }
   }, [isShown, setMessage, duration]);
 
-  return { isShown };
+  return { isShown, isHiding };
 }
