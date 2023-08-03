@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 import { useToast, useWordsDB } from "@/hooks";
 import { parseWords } from "@/utils";
