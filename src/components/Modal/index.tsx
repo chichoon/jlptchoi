@@ -6,7 +6,6 @@ interface Props {
 }
 
 const ModalPortal = ({ children }: Props) => {
-  if (!document) return null;
   const element = document.getElementById("modal");
   if (!element) return null;
   return ReactDOM.createPortal(children, element);
