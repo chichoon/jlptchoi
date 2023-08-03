@@ -15,6 +15,7 @@ interface Props {
 }
 
 const ToastPortal = ({ children }: Props) => {
+  if (!document) return null;
   const element = document.getElementById("toast");
   if (!element) return null;
   return ReactDOM.createPortal(children, element);

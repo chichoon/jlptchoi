@@ -6,6 +6,7 @@ interface Props {
 }
 
 const ModalPortal = ({ children }: Props) => {
+  if (!document) return null;
   const element = document.getElementById("modal");
   if (!element) return null;
   return ReactDOM.createPortal(children, element);
@@ -28,12 +29,14 @@ export const Modal = ({ message, onClickClose, onClickOK }: ModalProps) => {
           <div className="w-full flex flex-row justify-between items-center">
             <button
               onClick={onClickClose}
-              className="p-2 flex-1 hover:bg-slate-100 transition-colors">
+              className="p-2 flex-1 hover:bg-slate-100 transition-colors"
+            >
               취소
             </button>
             <button
               onClick={onClickOK}
-              className="p-2 flex-1 hover:bg-slate-100 transition-colors">
+              className="p-2 flex-1 hover:bg-slate-100 transition-colors"
+            >
               확인
             </button>
           </div>
