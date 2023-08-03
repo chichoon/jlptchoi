@@ -51,15 +51,29 @@ export const WordsTable = () => {
 
   return (
     <>
-      <table>
+      <table className="border-2">
+        <thead className="bg-slate-100">
+          <tr className="grid grid-cols-4">
+            <th>단어</th>
+            <th>발음</th>
+            <th>뜻</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
         <tbody>
           {words.map((word, index) => {
             return (
-              <tr key={`${word}-${index}`}>
-                <td>{word.word}</td>
-                <td>{word.pronunciation}</td>
-                <td>{word.meaning}</td>
-                <td>
+              <tr key={`${word}-${index}`} className="grid grid-cols-4">
+                <td className="flex items-center justify-center text-lg">
+                  {word.word}
+                </td>
+                <td className="flex items-center justify-center">
+                  {word.pronunciation}
+                </td>
+                <td className="flex items-center justify-center">
+                  {word.meaning}
+                </td>
+                <td className="flex items-center justify-center text-lg">
                   <Button
                     type="button"
                     text="삭제"
