@@ -2,7 +2,7 @@
 
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
-import { useWordsDB } from "@/hooks";
+import { useToast, useWordsDB } from "@/hooks";
 import { parseWords } from "@/utils";
 import { Button } from "../Button";
 import { Toast } from "../Toast";
@@ -11,6 +11,7 @@ export const ImportForm = () => {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const { saveToDB } = useWordsDB();
   const [message, setMessage] = useState("");
+  const { isShown } = useToast({ message, setMessage });
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +33,7 @@ export const ImportForm = () => {
         />
         <Button type="submit" text="제출" />
       </form>
-      <Toast message={message} setMessage={setMessage} />
+      {isShown && <Toast message={message} />}
     </>
   );
 };

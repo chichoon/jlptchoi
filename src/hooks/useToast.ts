@@ -6,7 +6,7 @@ interface Props {
   duration?: number;
 }
 
-function useToast({ message, setMessage, duration = 1000 }: Props) {
+export function useToast({ message, setMessage, duration = 1000 }: Props) {
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
@@ -24,12 +24,7 @@ function useToast({ message, setMessage, duration = 1000 }: Props) {
         clearTimeout(setTimeout2);
       }, duration + 500);
     }
-
-    return () => {
-      clearTimeout(setTimeout1);
-      clearTimeout(setTimeout2);
-    };
-  }, [isShown, setMessage]);
+  }, [isShown, setMessage, duration]);
 
   return { isShown };
 }
