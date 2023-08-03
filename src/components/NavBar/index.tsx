@@ -10,7 +10,7 @@ interface Props {
 
 export const NavBar = ({ children }: Props) => {
   return (
-    <nav className="flex flex-row justify-between items-center border-b-black border-solid border-b-2">
+    <nav className="flex flex-row h-12 justify-between items-center border-b-black border-solid border-b-2">
       {children}
     </nav>
   );
@@ -31,9 +31,10 @@ export const NavBarButton = ({
     <Link
       href={href}
       className={twMerge(
-        "inline-block  text-center flex-1 px-4 py-2",
+        "text-center flex-1 px-4 py-2 h-full flex items-center justify-center",
         className
-      )}>
+      )}
+    >
       {children}
     </Link>
   );

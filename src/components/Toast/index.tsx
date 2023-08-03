@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import ReactDOM from "react-dom";
 import cn from "classnames";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   children: ReactNode;
@@ -22,14 +23,17 @@ interface ToastProps {
 export const Toast = ({ message, isHiding }: ToastProps) => {
   return (
     <ToastPortal>
-      <div className="fixed bottom-0 left-0 w-full h-full flex items-center justify-center">
-        <div
-          className={cn("bg-white rounded-sm border-2 animate-fade-in", {
-            "animate-fade-out": isHiding,
-          })}
-        >
-          <span>{message}</span>
-        </div>
+      <div
+        className={twMerge(
+          cn(
+            "fixed top-12 right-4 px-4 py-1 bg-slate-600 animate-fade-top-down",
+            {
+              "animate-fade-out": isHiding,
+            }
+          )
+        )}
+      >
+        <span className="text-white">{message}</span>
       </div>
     </ToastPortal>
   );
