@@ -25,12 +25,10 @@ export const Toast = ({ message, isHiding }: ToastProps) => {
     <ToastPortal>
       <div
         className={twMerge(
-          cn(
-            "fixed top-12 right-4 px-4 py-1 bg-slate-600 animate-fade-top-down",
-            {
-              "animate-fade-out": isHiding,
-            }
-          )
+          cn("fixed top-12 right-4 px-4 py-1 bg-slate-600", {
+            "animate-fade-top-down": !isHiding,
+            "animate-fade-out": isHiding,
+          })
         )}
       >
         <span className="text-white">{message}</span>

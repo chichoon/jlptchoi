@@ -25,7 +25,7 @@ export function useToast({ message, setMessage, duration = 1000 }: Props) {
       const setTimeout2 = setTimeout(() => {
         setIsHiding(true);
         clearTimeout(setTimeout2);
-      }, duration - 200);
+      }, duration - 300);
     }
   }, [isShown, setMessage, duration]);
 
